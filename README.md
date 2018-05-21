@@ -1,4 +1,4 @@
-# Vue Property Decorator
+# Vue Local Storage Decorator
 
 [![npm](https://img.shields.io/npm/v/vue-local-storage-decorator.svg)](https://www.npmjs.com/package/vue-local-storage-decorator)
 [![Build Status](https://travis-ci.com/vip30/vue-local-storage-decorator.svg?branch=master)](https://travis-ci.com/vip30/vue-local-storage-decorator)
