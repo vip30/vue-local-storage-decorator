@@ -161,6 +161,5 @@ describe('<vue-local-storage-decorator.spec.ts>', () => {
     t.shallowNoNameComp()
     console.log(t.wrapper.vm.$options.name)
     expect(t.wrapper.vm.dummyHello).toBe('I am dummy')
-    // expect(t.wrapper.vm.dummyHello)
   })    
 })
