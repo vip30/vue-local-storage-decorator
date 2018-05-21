@@ -8,6 +8,8 @@ install:
 - snyk test
 script:
 - npm run cover && codecov
+after_success:
+- snyk monitor
 before_deploy:
 - npm run build
 deploy:
@@ -19,6 +21,5 @@ deploy:
     tags: true
     repo: vip30/vue-local-storage-decorator
     node: '7.0'
-after_deploy:
-    - snyk monitor
+
     
