@@ -9,7 +9,7 @@ script:
 deploy:
   provider: npm
   email: ken726@hotmail.com
-  api_key: $NPM_TOKEN
+  api_key: "$NPM_TOKEN"
   on:
     tags: true
     repo: vip30/vue-local-storage-decorator

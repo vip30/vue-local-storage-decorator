@@ -121,7 +121,7 @@ describe('<vue-local-storage-decorator.spec.ts>', () => {
     const t = new PersistStoreTest()
     t.shallow()
     const dummyTestObj: any = {
-      test: 'aa'
+      test: 'dummy'
     }
     dummyTestObj.test2 = dummyTestObj
     t.wrapper.vm.dummyHello = dummyTestObj
