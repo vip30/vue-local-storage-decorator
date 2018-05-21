@@ -17,4 +17,3 @@ deploy:
     tags: true
     repo: vip30/vue-local-storage-decorator
     node: '7.0'
-    
