@@ -15,8 +15,8 @@ class Dummy extends Vue {
   }
 
   public mounted() {
-    // 
-  }  
+    //
+  }
 }
 
 @Component({
@@ -30,7 +30,7 @@ class DummyWithDecorator extends Vue {
   }
 
   public mounted() {
-    // 
+    //
   }
 }
 
@@ -69,13 +69,13 @@ class PersistStoreTest {
   public shallowDecoratedComp() {
     this.wrapper = shallowMount(DummyWithDecorator, {
       localVue
-    })    
+    })
   }
 
   public shallowNoNameComp() {
     this.wrapper = shallowMount(NoNameComponent, {
       localVue
-    })    
+    })
   }
 
   public setTestLocalStorage() {
@@ -160,5 +160,5 @@ describe('<vue-local-storage-decorator.spec.ts>', () => {
     t.shallowNoNameComp()
     console.log(t.wrapper.vm.$options.name)
     expect(t.wrapper.vm.dummyHello).toBe('I am dummy')
-  })    
+  })
 })
