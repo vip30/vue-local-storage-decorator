@@ -28,6 +28,7 @@
     "@types/jest": "^16.0.8",
     "@types/node": "^8.0.47",
     "@vue/test-utils": "^1.0.0-beta.10",
+    "codecov": "^3.0.2",
     "jest": "^22.4.3",
     "jest-localstorage-mock": "^2.2.0",
     "rollup": "^0.50.0",
