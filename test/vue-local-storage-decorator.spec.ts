@@ -13,6 +13,10 @@ class Dummy extends Vue {
   render(h: any): VNode {
     return h('div', this.dummyHello)
   }
+
+  public mounted() {
+    // 
+  }  
 }
 
 @Component({
@@ -24,12 +28,29 @@ class DummyWithDecorator extends Vue {
   render(h: any): VNode {
     return h('div', this.dummyHello)
   }
+
+  public mounted() {
+    // 
+  }
+}
+
+@Component({})
+class NoNameComponent extends Vue {
+  @Persist()
+  public dummyHello: string = 'I am dummy'
+  render(h: any): VNode {
+    return h('div', this.dummyHello)
+  }
+
+  public beforeCreate() {
+    this.$options.name = undefined
+  }
 }
 
 class PersistStoreTest {
   public warningMessage: string = ''
   public wrapper: any
-  
+
   public testLocalStorageString: string = 'local storage'
   public testString: string = 'dummy test'
   constructor() {
@@ -45,15 +66,22 @@ class PersistStoreTest {
     })
   }
 
-  public shallowDecoratorComp() {
+  public shallowDecoratedComp() {
     this.wrapper = shallowMount(DummyWithDecorator, {
       localVue
-    })
+    })    
+  }
+
+  public shallowNoNameComp() {
+    this.wrapper = shallowMount(NoNameComponent, {
+      localVue
+    })    
   }
 
   public setTestLocalStorage() {
     const stateData = {
-      dummy: ['dummyHello']
+      dummy: ['dummyHello'],
+      'dummy-with-decorator': ['dummyHello']
     }
     localStorage.setItem('persistStateData', JSON.stringify(stateData))
     localStorage.setItem('dummyHello', this.testLocalStorageString)
@@ -107,4 +135,32 @@ describe('<vue-local-storage-decorator.spec.ts>', () => {
     t.shallow()
     expect(t.wrapper.vm.dummyHello).toBe(t.testLocalStorageString)
   })
+
+  test('data can be retrieved in a decorated component while in created lifecycle', () => {
+    const t = new PersistStoreTest()
+    t.setTestLocalStorage()
+    t.shallowDecoratedComp()
+    expect(t.wrapper.vm.dummyHello).toBe(t.testLocalStorageString)
+    // expect(t.wrapper.vm.dummyHello)
+  })
+
+  test('data can be presisted in a decorated component while data is changed', () => {
+    const t = new PersistStoreTest()
+    t.setTestLocalStorage()
+    t.shallowDecoratedComp()
+    const testStr = 'data changed'
+    t.wrapper.vm.dummyHello = testStr
+    expect(localStorage.getItem('dummyHello')).toBe(testStr)
+    // expect(t.wrapper.vm.dummyHello)
+  })
+
+
+  test('component without name will be ignored', () => {
+    const t = new PersistStoreTest()
+    t.setTestLocalStorage()
+    t.shallowNoNameComp()
+    console.log(t.wrapper.vm.$options.name)
+    expect(t.wrapper.vm.dummyHello).toBe('I am dummy')
+    // expect(t.wrapper.vm.dummyHello)
+  })    
 })
