@@ -6,6 +6,8 @@ install:
 - npm install
 script:
 - npm run cover && codecov
+before_deploy:
+- npm run build
 deploy:
   provider: npm
   email: ken726@hotmail.com
