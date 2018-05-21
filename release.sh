@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-read -p "Enter release version: " VERSION
+read -rp "Enter release version: " VERSION
 
 read -p "Releasing $VERSION - are you sure? (y/N) " -n 1 -r
 echo    # (optional) move to a new line
