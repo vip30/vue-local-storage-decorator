@@ -1,5 +1,5 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils'
-import localStorageHelper from '../src/vue-local-storage-decorator'
+import localStorageHelper, { Persist } from '../src/vue-local-storage-decorator'
 import Component from 'vue-class-component'
 import Vue, { VNode } from 'vue'
 const localVue = createLocalVue()
@@ -15,11 +15,21 @@ class Dummy extends Vue {
   }
 }
 
+@Component({
+  name: 'dummy-with-decorator'
+})
+class DummyWithDecorator extends Vue {
+  @Persist()
+  public dummyHello: string = 'I am dummy'
+  render(h: any): VNode {
+    return h('div', this.dummyHello)
+  }
+}
+
 class PersistStoreTest {
   public warningMessage: string = ''
-  public wrapper: {
-    vm: Dummy | any
-  }
+  public wrapper: any
+  
   public testLocalStorageString: string = 'local storage'
   public testString: string = 'dummy test'
   constructor() {
@@ -28,8 +38,15 @@ class PersistStoreTest {
       this.warningMessage = message
     }
   }
+
   public shallow() {
     this.wrapper = shallowMount(Dummy, {
+      localVue
+    })
+  }
+
+  public shallowDecoratorComp() {
+    this.wrapper = shallowMount(DummyWithDecorator, {
       localVue
     })
   }
