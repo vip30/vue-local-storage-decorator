@@ -1,5 +1,5 @@
 declare module 'vue-local-storage-decorator' {
-  import Vue from 'vue'
+  import Vue, { PluginFunction } from 'vue'
   module "vue/types/vue" {
     interface Vue {
       /**
@@ -40,4 +40,6 @@ declare module 'vue-local-storage-decorator' {
       $_saveComponentNameMapping(dataKey: string): void      
     }
   }
+
+  export function install (): PluginFunction<any>
 }
