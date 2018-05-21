@@ -141,7 +141,6 @@ describe('<vue-local-storage-decorator.spec.ts>', () => {
     t.setTestLocalStorage()
     t.shallowDecoratedComp()
     expect(t.wrapper.vm.dummyHello).toBe(t.testLocalStorageString)
-    // expect(t.wrapper.vm.dummyHello)
   })
 
   test('data can be presisted in a decorated component while data is changed', () => {
