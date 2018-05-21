@@ -37,14 +37,14 @@
     "rollup-plugin-typescript": "^0.8.1",
     "ts-jest": "^22.4.6",
     "typescript": "^2.8.3",
-    "snyk": "^1.80.0",
     "vue": "^2.5.16",
     "vue-jest": "^2.6.0",
     "vue-template-compiler": "^2.5.13"
   },
   "typings": "index.d.ts",
   "dependencies": {
-    "vue-class-component": "^6.2.0"
+    "vue-class-component": "^6.2.0",
+    "snyk": "^1.80.0"    
   },
   "repository": {
     "type": "git",
