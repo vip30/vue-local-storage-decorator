@@ -5,7 +5,6 @@ node_js:
 install:
 - npm install -g snyk
 - npm install
-- snyk auth $SNYK_TOKEN
 - snyk test
 script:
 - npm run cover && codecov
