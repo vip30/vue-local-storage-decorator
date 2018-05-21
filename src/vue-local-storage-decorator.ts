@@ -99,7 +99,7 @@ export default (localVue: VueConstructor<Vue>) => {
           }
           self.$_savePersistStateData(JSON.stringify(presistStateData))
         }
-      }      
+      }
     }
   })
 }
