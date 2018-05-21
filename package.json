@@ -43,8 +43,7 @@
   },
   "typings": "index.d.ts",
   "dependencies": {
-    "vue-class-component": "^6.2.0",
-    "snyk": "^1.80.0"    
+    "vue-class-component": "^6.2.0"
   },
   "repository": {
     "type": "git",
