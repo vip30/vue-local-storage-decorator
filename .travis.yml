@@ -1,18 +1,17 @@
 language: node_js
 sudo: false
 node_js:
-  - "7.0"
+- '7.0'
 install:
-  - npm install
+- npm install
 script:
-  - npm run cover && codecov
-
+- npm run cover && codecov
 deploy:
   provider: npm
-  email: ken.vizztech@gmail.com
-
+  email: ken726@hotmail.com
+  api_key:
+    secure: "Ti86koH4aEehf4X6qbU/K/C44Z8jZ4wLfL/+m0LdvYctlp1shbe7EaatylTNTVgyPf1cQdwXDdMBGyecgEzW0UayhjUIZ2Q0Oms4pJdjXaGriW6i4wb1m/qomj+wHPCMn28hWzz2/buqech5CuyHhEToEsJ7d4wl00v8Uw9mlnDdR/+kqm+ik5rIUzHtysaXizdfP557wsFxYgPV87W9+q1KOolq9k+wSSwqXbCktr5kMHTaEbVVSdpg7+Vxyf8UX4TpNPxIDfctVS4Dz8bTK5r5ixkyk5BUgD0FfTAtjNxd0BHSNoWeA35dYCTATQWxu84J7ViGn378TwYS5Md4slqN3F+KnAHUJsy6LkzH3cop3A7C0GyWj0p1IGMHjJdfB3CdAuRG3PdifMJQtnxWODtDTk2ZDkImcacT6wQeRwknfDRF207LW7MzO/rgK6P5G5eOWBW1N9uH55L9i53ZwPt5q1jDQwTB8egy1w4qZbYLykrlORll22PhYdoK2gHCIQD9wESS+yjHkug594tCqjtKUPkpy6JgHVtdCiZ3O3h8mXpXfskisE1XU1z1+iHXxt8T7tnAbjzDXoLqCyfZkv4VOmuDejAzcQtb+/fYWYP9L+uQMP0aMmHSgppPMX4J8eidI1+vRdwo2m2IHOdcMaXdFDuuq69rrgEKJaj7T3o="
   on:
     tags: true
     repo: vip30/vue-local-storage-decorator
-    branch: master
     node: '7.0'
