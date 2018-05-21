@@ -1,6 +1,6 @@
 {
   "name": "vue-local-storage-decorator",
-  "version": "0.0.7",
+  "version": "0.0.1",
   "description": "local storage decorator and helper function in Vue",
   "main": "dist/vue-local-storage-decorator.umd.js",
   "module": "dist/vue-local-storage-decorator.js",
