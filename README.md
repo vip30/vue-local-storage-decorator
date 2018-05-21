@@ -29,11 +29,22 @@ Vue.use(VueLocalStorage)
 
 // In component
 import { Persist } from 'vue-local-storage-decorator'
-@Component
+@Component({
+  // It will use the component name to persist the data
+  name: 'dummy'
+})
 export class DummyComponent extends Vue {
   // It will save in the local storage while the data is changed and will auto resume from local storage in created lifecycle
   @Persist()
   public dummyData: string[] = []
+
+  public saveDummy() {
+    // You can also call it manually
+    this.persistData('dummyData')
+
+    // You can get the data by calling getPersistData
+    this.dummyData = this.getPersistData<string[]>('dummyHello')
+  }
 }
 
 ```

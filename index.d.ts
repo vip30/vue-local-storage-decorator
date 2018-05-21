@@ -24,20 +24,6 @@ declare module 'vue-local-storage-decorator' {
        * @param dataKey
        */
       persistDataWithProvidedKey(key: string, dataKey: string): void
-      /**
-       * Private function
-       */
-      $_getPersistStateData(): {
-        [key: string]: string[]
-      }
-      /**
-       * Private function
-       */      
-      $_savePersistStateData(value: string): void
-      /**
-       * Private function
-       */      
-      $_saveComponentNameMapping(dataKey: string): void      
     }
   }
   export function Persist(options?: WatchOptions): (target: Vue, key: string) => void;

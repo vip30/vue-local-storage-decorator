@@ -1,5 +1,6 @@
 import Vue, { VueConstructor,WatchOptions } from "vue"
 import { createDecorator } from 'vue-class-component'
+import { VueLocalStorageDecoratorConstructor } from '../types/vue-local-storage-decorator-constructor'
 
 export function Persist(
   options: WatchOptions = {
@@ -28,7 +29,7 @@ export function Persist(
 export default (localVue: VueConstructor<Vue>) => {
   return localVue.mixin({
     created() {
-      const self: Vue = this
+      const self: VueLocalStorageDecoratorConstructor = this
       if (!self.$options.name) {
         return
       }
@@ -55,12 +56,14 @@ export default (localVue: VueConstructor<Vue>) => {
         return data as T | null
       },
       persistData(dataKey: string): void {
-        this.$_saveComponentNameMapping(dataKey)
-        this.persistDataWithProvidedKey(dataKey, dataKey)
+        const self: VueLocalStorageDecoratorConstructor = this as any
+        self.$_saveComponentNameMapping(dataKey)
+        self.persistDataWithProvidedKey(dataKey, dataKey)
       },
       persistDataWithProvidedKey(key: string, dataKey: string) {
+        const self: VueLocalStorageDecoratorConstructor = this as any
         let result: string = ''
-        const dataVal: any = this.$data[dataKey]
+        const dataVal: any = self.$data[dataKey]
         if (typeof dataVal === 'object') {
           try {
             result = JSON.stringify(dataVal)
@@ -74,8 +77,9 @@ export default (localVue: VueConstructor<Vue>) => {
         localStorage.setItem(key, result)
       },
       $_getPersistStateData() {
+        const self: VueLocalStorageDecoratorConstructor = this as any
         return (
-          this.getPersistData<{
+          self.getPersistData<{
             [key: string]: string[]
           }>('persistStateData') || {}
         )
@@ -84,15 +88,16 @@ export default (localVue: VueConstructor<Vue>) => {
         localStorage.setItem('persistStateData', value)
       },
       $_saveComponentNameMapping(dataKey: string) {
-        if (this.$options.name) {
-          const presistStateData = this.$_getPersistStateData()
-          if (!presistStateData[this.$options.name]) {
-            presistStateData[this.$options.name] = []
+        const self: VueLocalStorageDecoratorConstructor = this as any
+        if (self.$options.name) {
+          const presistStateData = self.$_getPersistStateData()
+          if (!presistStateData[self.$options.name]) {
+            presistStateData[self.$options.name] = []
           }
-          if (presistStateData[this.$options.name].indexOf(dataKey) < 0) {
-            presistStateData[this.$options.name].push(dataKey)
+          if (presistStateData[self.$options.name].indexOf(dataKey) < 0) {
+            presistStateData[self.$options.name].push(dataKey)
           }
-          this.$_savePersistStateData(JSON.stringify(presistStateData))
+          self.$_savePersistStateData(JSON.stringify(presistStateData))
         }
       }      
     }

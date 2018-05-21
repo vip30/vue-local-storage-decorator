@@ -11,14 +11,13 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "typeRoots": ["../node_modules/@types"],
+    "typeRoots": ["../node_modules/@types", "../types"],
     "baseUrl": ".",
     "noImplicitThis": false,
     "noUnusedLocals": true
   },
   "include": [
-    "./*.ts",
-    "../index.d.ts"
+    "./*.ts"
   ],
   "exclude": ["node_modules", "dist"]
 }
