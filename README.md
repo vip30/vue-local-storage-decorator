@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.com/vip30/vue-local-storage-decorator.svg?branch=master)](https://travis-ci.com/vip30/vue-local-storage-decorator)
 [![Coverage](https://codecov.io/gh/vip30/vue-local-storage-decorator/branch/master/graph/badge.svg)](https://codecov.io/gh/vip30/vue-local-storage-decorator)
 [![CodeFactor](https://www.codefactor.io/repository/github/vip30/vue-local-storage-decorator/badge/master)](https://www.codefactor.io/repository/github/vip30/vue-local-storage-decorator/overview/master)
-[![Known Vulnerabilities](https://snyk.io/test/github/vip30/vue-local-storage-decorator:package.json/badge.svg?targetFile=package.json)](https://snyk.io/test/github/vip30/vue-local-storage-decorator:package.json?targetFile=package.json)
+[![Known Vulnerabilities](https://snyk.io/test/github/vip30/vue-local-storage-decorator/badge.svg)](https://snyk.io/test/github/vip30/vue-local-storage-decorator)
 
 This library fully depends on [vue-class-component](https://github.com/vuejs/vue-class-component).
 
