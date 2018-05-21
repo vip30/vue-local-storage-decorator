@@ -6,6 +6,10 @@
 
 This library fully depends on [vue-class-component](https://github.com/vuejs/vue-class-component).
 
+## Description
+
+It persist the component data by using local storage
+
 ## License
 
 MIT License
@@ -24,6 +28,7 @@ import VueLocalStorage from 'vue-local-storage-decorator'
 Vue.use(VueLocalStorage)
 
 // In component
+import { Persist } from 'vue-local-storage-decorator'
 @Component
 export class DummyComponent extends Vue {
   // It will save in the local storage while the data is changed and will auto resume from local storage in created lifecycle
