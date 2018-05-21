@@ -43,7 +43,7 @@ class PersistStoreTest {
   }
 }
 
-describe('<persistState.ts>', () => {
+describe('<vue-local-storage-decorator.spec.ts>', () => {
   test('persist data method can be set', () => {
     const t = new PersistStoreTest()
     t.shallow()
