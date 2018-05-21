@@ -5,11 +5,8 @@ node_js:
 install:
 - npm install -g snyk
 - npm install
-- snyk test
 script:
 - npm run cover && codecov
-after_success:
-- snyk monitor
 before_deploy:
 - npm run build
 deploy:
