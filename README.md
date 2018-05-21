@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/vue-local-storage-decorator.svg)](https://www.npmjs.com/package/vue-local-storage-decorator)
 [![Build Status](https://travis-ci.com/vip30/vue-local-storage-decorator.svg?branch=master)](https://travis-ci.com/vip30/vue-local-storage-decorator)
-
+[![Coverage](https://codecov.io/gh/vip30/vue-local-storage-decorator/branch/master/graph/badge.svg)](https://codecov.io/gh/vip30/vue-local-storage-decorator)
 
 This library fully depends on [vue-class-component](https://github.com/vuejs/vue-class-component).
 
