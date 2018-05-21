@@ -22,7 +22,8 @@
     "release": "sh release.sh"
   },
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "devDependencies": {
     "@types/jest": "^16.0.8",
@@ -40,7 +41,7 @@
     "vue-jest": "^2.6.0",
     "vue-template-compiler": "^2.5.13"
   },
-  "typings": "./index.d.ts",
+  "typings": "index.d.ts",
   "dependencies": {
     "vue-class-component": "^6.2.0"
   },
