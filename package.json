@@ -18,10 +18,11 @@
   "scripts": {
     "build": "tsc -p src/tsconfig.json && rollup -c",
     "test": "jest --no-cache --watchAll",
-    "cover": "jest --coverage --no-cache"
+    "cover": "jest --coverage --no-cache",
+    "release": "sh release.sh"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "devDependencies": {
     "@types/jest": "^16.0.8",
