@@ -52,7 +52,7 @@ class PersistStoreTest {
   public wrapper: any
 
   public testLocalStorageString: string = 'local storage'
-  public testString: string = 'dummy test'
+  public testString: string = 'dummy test2'
   constructor() {
     // For retrieve the warning message
     console.warn = (message: string) => {
