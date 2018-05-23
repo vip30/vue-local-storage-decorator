@@ -61,7 +61,7 @@ class PersistStoreTest {
     }
     console.error = (message: string) => {
       this.errorMessage = message
-    }    
+    }
   }
 
   public shallow() {
@@ -180,5 +180,5 @@ describe('<vue-local-storage-decorator.spec.ts>', () => {
     expect(t.wrapper.vm.dummyHello).not.toBe(t.testLocalStorageString)
     t.wrapper.vm.dummyHello = testStr
     expect(t.errorMessage).toContain('Nameless')
-  })    
+  })
 })
