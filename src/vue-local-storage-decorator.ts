@@ -98,6 +98,8 @@ export default (localVue: VueConstructor<Vue>) => {
             presistStateData[self.$options.name].push(dataKey)
           }
           self.$_savePersistStateData(JSON.stringify(presistStateData))
+        } else {
+          console.error('Nameless component cannot use persistData')
         }
       }
     }

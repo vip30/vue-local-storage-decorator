@@ -49,6 +49,7 @@ class NoNameComponent extends Vue {
 
 class PersistStoreTest {
   public warningMessage: string = ''
+  public errorMessage: string = ''
   public wrapper: any
 
   public testLocalStorageString: string = 'local storage'
@@ -58,6 +59,9 @@ class PersistStoreTest {
     console.warn = (message: string) => {
       this.warningMessage = message
     }
+    console.error = (message: string) => {
+      this.errorMessage = message
+    }    
   }
 
   public shallow() {
@@ -85,6 +89,14 @@ class PersistStoreTest {
     }
     localStorage.setItem('persistStateData', JSON.stringify(stateData))
     localStorage.setItem('dummyHello', this.testLocalStorageString)
+  }
+
+  public setDeprecatedLocalStorage() {
+    const stateData = {
+      dummy: ['dummyHello']
+    }
+    localStorage.setItem('persistStateData', JSON.stringify(stateData))
+    localStorage.removeItem('dummyHello')
   }
 }
 
@@ -136,6 +148,13 @@ describe('<vue-local-storage-decorator.spec.ts>', () => {
     expect(t.wrapper.vm.dummyHello).toBe(t.testLocalStorageString)
   })
 
+  test('deprecated data will be ignored while in created lifecycle', () => {
+    const t = new PersistStoreTest()
+    t.setDeprecatedLocalStorage()
+    t.shallow()
+    expect(t.wrapper.vm.dummyHello).not.toBe(t.testLocalStorageString)
+  })
+
   test('data can be retrieved in a decorated component while in created lifecycle', () => {
     const t = new PersistStoreTest()
     t.setTestLocalStorage()
@@ -147,18 +166,19 @@ describe('<vue-local-storage-decorator.spec.ts>', () => {
     const t = new PersistStoreTest()
     t.setTestLocalStorage()
     t.shallowDecoratedComp()
-    const testStr = 'data changed'
-    t.wrapper.vm.dummyHello = testStr
-    expect(localStorage.getItem('dummyHello')).toBe(testStr)
+    t.wrapper.vm.dummyHello = t.testString
+    expect(localStorage.getItem('dummyHello')).toBe(t.testString)
     // expect(t.wrapper.vm.dummyHello)
   })
 
 
-  test('component without name will be ignored', () => {
+  test('component without name will be ignored and will log the error', () => {
     const t = new PersistStoreTest()
     t.setTestLocalStorage()
     t.shallowNoNameComp()
-    console.log(t.wrapper.vm.$options.name)
-    expect(t.wrapper.vm.dummyHello).toBe('I am dummy')
-  })
+    const testStr = 'data changed'
+    expect(t.wrapper.vm.dummyHello).not.toBe(t.testLocalStorageString)
+    t.wrapper.vm.dummyHello = testStr
+    expect(t.errorMessage).toContain('Nameless')
+  })    
 })
