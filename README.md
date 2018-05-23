@@ -10,7 +10,7 @@ This library fully depends on [vue-class-component](https://github.com/vuejs/vue
 
 ## Description
 
-It persist the component data by using local storage
+It persists the component data by using local storage
 
 ## License
 
