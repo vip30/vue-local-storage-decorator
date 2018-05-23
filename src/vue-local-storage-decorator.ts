@@ -1,4 +1,4 @@
-import Vue, { VueConstructor,WatchOptions } from "vue"
+import Vue, { VueConstructor, WatchOptions } from 'vue'
 import { createDecorator } from 'vue-class-component'
 import { VueLocalStorageDecoratorConstructor } from '../types/vue-local-storage-decorator-constructor'
 
@@ -29,7 +29,7 @@ export function Persist(
 export default (localVue: VueConstructor<Vue>) => {
   return localVue.mixin({
     created() {
-      const self: VueLocalStorageDecoratorConstructor = this
+      const self: VueLocalStorageDecoratorConstructor = this as any
       if (!self.$options.name) {
         return
       }

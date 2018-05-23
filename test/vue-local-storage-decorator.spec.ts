@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils'
-import localStorageHelper, { Persist } from '../src/vue-local-storage-decorator'
-import Component from 'vue-class-component'
 import Vue, { VNode } from 'vue'
+import Component from 'vue-class-component'
+import localStorageHelper, { Persist } from '../src/vue-local-storage-decorator'
 const localVue = createLocalVue()
 localVue.use(localStorageHelper)
 
@@ -10,7 +10,7 @@ localVue.use(localStorageHelper)
 })
 class Dummy extends Vue {
   public dummyHello: string = 'I am dummy'
-  render(h: any): VNode {
+  public render(h: any): VNode {
     return h('div', this.dummyHello)
   }
 
@@ -23,9 +23,8 @@ class Dummy extends Vue {
   name: 'dummy-with-decorator'
 })
 class DummyWithDecorator extends Vue {
-  @Persist()
-  public dummyHello: string = 'I am dummy'
-  render(h: any): VNode {
+  @Persist() public dummyHello: string = 'I am dummy'
+  public render(h: any): VNode {
     return h('div', this.dummyHello)
   }
 
@@ -36,9 +35,8 @@ class DummyWithDecorator extends Vue {
 
 @Component({})
 class NoNameComponent extends Vue {
-  @Persist()
-  public dummyHello: string = 'I am dummy'
-  render(h: any): VNode {
+  @Persist() public dummyHello: string = 'I am dummy'
+  public render(h: any): VNode {
     return h('div', this.dummyHello)
   }
 
@@ -170,7 +168,6 @@ describe('<vue-local-storage-decorator.spec.ts>', () => {
     expect(localStorage.getItem('dummyHello')).toBe(t.testString)
     // expect(t.wrapper.vm.dummyHello)
   })
-
 
   test('component without name will be ignored and will log the error', () => {
     const t = new PersistStoreTest()

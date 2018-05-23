@@ -17,9 +17,11 @@
   },
   "scripts": {
     "build": "tsc -p src/tsconfig.json && rollup -c",
-    "test": "jest --no-cache --watchAll",
     "cover": "jest --coverage --no-cache",
-    "release": "sh release.sh"
+    "format": "prettier -signle-quote --write '**/*.ts' ",
+    "pre-commit": "npm run format",
+    "release": "sh release.sh",
+    "test": "jest --no-cache --watchAll"
   },
   "files": [
     "dist",
@@ -37,10 +39,18 @@
     "rollup-plugin-typescript": "^0.8.1",
     "ts-jest": "^22.4.6",
     "typescript": "^2.8.3",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.7.0",
+    "pre-commit": "^1.2.2",    
+    "prettier": "^1.10.2",
+    "prettier-tslint": "^0.3.0",
     "vue": "^2.5.16",
     "vue-jest": "^2.6.0",
     "vue-template-compiler": "^2.5.13"
   },
+  "pre-commit": [
+    "pre-commit"
+  ],  
   "typings": "index.d.ts",
   "dependencies": {
     "vue-class-component": "^6.2.0"
