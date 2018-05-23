@@ -10,7 +10,7 @@ declare module 'vue-local-storage-decorator' {
       /**
        * Do not call it when multiple same name component with multiple dataset
        *
-       * It will persist by {component name: requested data}
+       * The data in local storage will like that: {component name: requested data key} and {requested data key: requested data}
        *
        * It will get the data from local storage and set the data in the component while created lifecycle
        * @param {string} dataKey
