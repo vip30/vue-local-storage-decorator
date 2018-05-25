@@ -45,7 +45,7 @@ export class DummyComponent extends Vue {
     this.persistData('dummyData')
 
     // You can get the data by calling getPersistData
-    this.dummyData = this.getPersistData<string[]>('dummyHello')
+    this.dummyData = this.getPersistData<string[]>('dummyData')
   }
 }
 
