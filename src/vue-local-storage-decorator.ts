@@ -60,21 +60,24 @@ export default (localVue: VueConstructor<Vue>) => {
         self.$_saveComponentNameMapping(dataKey)
         self.persistDataWithProvidedKey(dataKey, dataKey)
       },
-      persistDataWithProvidedKey(key: string, dataKey: string) {
-        const self: VueLocalStorageDecoratorConstructor = this as any
+      persistDataByKeyValue(key: string, value: any) {
         let result: string = ''
-        const dataVal: any = self.$data[dataKey]
-        if (typeof dataVal === 'object') {
+        if (typeof value === 'object') {
           try {
-            result = JSON.stringify(dataVal)
+            result = JSON.stringify(value)
           } catch (e) {
             console.warn(e)
             return
           }
         } else {
-          result = dataVal
+          result = value
         }
         localStorage.setItem(key, result)
+      },
+      persistDataWithProvidedKey(key: string, dataKey: string) {
+        const self: VueLocalStorageDecoratorConstructor = this as any
+        const dataVal: any = self.$data[dataKey]
+        self.persistDataByKeyValue(key, dataVal)
       },
       $_getPersistStateData() {
         const self: VueLocalStorageDecoratorConstructor = this as any
@@ -83,9 +86,6 @@ export default (localVue: VueConstructor<Vue>) => {
             [key: string]: string[]
           }>('persistStateData') || {}
         )
-      },
-      $_savePersistStateData(value: string) {
-        localStorage.setItem('persistStateData', value)
       },
       $_saveComponentNameMapping(dataKey: string) {
         const self: VueLocalStorageDecoratorConstructor = this as any
@@ -97,7 +97,7 @@ export default (localVue: VueConstructor<Vue>) => {
           if (presistStateData[self.$options.name].indexOf(dataKey) < 0) {
             presistStateData[self.$options.name].push(dataKey)
           }
-          self.$_savePersistStateData(JSON.stringify(presistStateData))
+          self.persistDataByKeyValue('persistStateData', presistStateData)
         } else {
           console.error('Nameless component cannot use persistData')
         }

@@ -19,11 +19,20 @@ declare module 'vue-local-storage-decorator' {
       persistData(dataKey: string): void
       /**
        * For normal persist the data by specify persist key and data key
+       * 
        * It will not retrieve the data automatically in the lifecycle
        * @param key
        * @param dataKey
        */
       persistDataWithProvidedKey(key: string, dataKey: string): void
+      /**
+       * Persist the data by given key and value. If the value is object, it will convert to json automatically
+       * 
+       * It will not retrieve the data automatically in the lifecycle
+       * @param key 
+       * @param value 
+       */
+      persistDataByKeyValue(key:string, value: any): void
     }
   }
   export function Persist(options?: WatchOptions): (target: Vue, key: string) => void;
