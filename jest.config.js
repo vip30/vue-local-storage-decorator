@@ -24,5 +24,6 @@ module.exports = {
   },
   coverageReporters: ['json', 'lcov', 'text'],
   bail: true,
-  verbose: true
+  verbose: true,
+  testURL: 'http://localhost'
 }

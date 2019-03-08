@@ -45,15 +45,20 @@ export default (localVue: VueConstructor<Vue>) => {
     },
     methods: {
       getPersistData<T>(key: string): T | null {
-        const data = localStorage.getItem(key)
-        try {
-          if (data) {
-            return JSON.parse(data)
+        if (localStorage) {
+          const data = localStorage.getItem(key)
+          try {
+            if (data) {
+              return JSON.parse(data)
+            }
+          } catch (e) {
+            // data is not json
           }
-        } catch (e) {
-          // data is not json
+          return data as T | null          
+        } else {
+          console.warn('Browser does not support local storage ')
+          return null
         }
-        return data as T | null
       },
       persistData(dataKey: string): void {
         const self: VueLocalStorageDecoratorConstructor = this as any
@@ -72,7 +77,11 @@ export default (localVue: VueConstructor<Vue>) => {
         } else {
           result = value
         }
-        localStorage.setItem(key, result)
+        if (localStorage) {
+          localStorage.setItem(key, result)
+        } else {
+          console.warn('Browser does not support local storage ')
+        }
       },
       persistDataWithProvidedKey(key: string, dataKey: string) {
         const self: VueLocalStorageDecoratorConstructor = this as any
