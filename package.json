@@ -18,7 +18,7 @@
   "scripts": {
     "build": "tsc -p src/tsconfig.json && rollup -c",
     "cover": "jest --coverage --no-cache",
-    "format": "prettier -signle-quote --write '**/*.ts' ",
+    "format": "prettier --write '**/*.ts' ",
     "pre-commit": "npm run format",
     "release": "sh release.sh",
     "test": "jest --no-cache --watchAll"

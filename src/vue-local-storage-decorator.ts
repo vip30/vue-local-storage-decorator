@@ -54,7 +54,7 @@ export default (localVue: VueConstructor<Vue>) => {
           } catch (e) {
             // data is not json
           }
-          return data as T | null          
+          return data as T | null
         } else {
           console.warn('Browser does not support local storage ')
           return null
